@@ -2,6 +2,17 @@
 
 ---
 
+## Scripts 📖
+
+To run the site use *npm start* or *npm server*
+
+```json
+"scripts": {
+    "start": "node server.js",
+    "server": "nodemon server.js",
+}
+```
+
 ## Packages 📦
 
 * **bcryptjs**:
