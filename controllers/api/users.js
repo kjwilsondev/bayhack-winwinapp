@@ -17,6 +17,7 @@ const User = require("../../models/User");
 router.post("/apply", (req, res) => {
     // Form validation
     const { errors, isValid } = validateApplicantInput(req.body);
+    console.log("we made it to validateApplicantInput")
     // Check validation
     // MongoDB User.findOne() to see if the user already exists
     if (!isValid) {

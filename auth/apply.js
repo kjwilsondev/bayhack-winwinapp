@@ -12,13 +12,13 @@ const isEmpty = require("is-empty");
 module.exports = function validateApplicantInput(data) {
     // Instantiate errors object
     let errors = {};
-
+    console.log("we made it 1!")
     // Convert empty fields to an empty string for validator functions
     data.name = !isEmpty(data.name) ? data.name : "";
     data.email = !isEmpty(data.email) ? data.email : "";
     data.password = !isEmpty(data.password) ? data.password : "";
     data.password2 = !isEmpty(data.password2) ? data.password2 : "";
-
+    console.log("we made it 2!")
     // Name checks
     if (Validator.isEmpty(data.name)) {
         errors.name = "Name field is required";
@@ -44,7 +44,7 @@ module.exports = function validateApplicantInput(data) {
     if (!Validator.equals(data.password, data.password2)) {
         errors.password2 = "Passwords must match";
     }
-
+    console.log("applied!")
     // Return errors object with any and all errors contained 
     // isValid boolean checks to see if we have any errors
     return {
