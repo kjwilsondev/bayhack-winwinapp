@@ -5,15 +5,13 @@ const jwt = require("jsonwebtoken");
 const keys = require("../../config/keys");
 
 // Load input validation
-const validateApplicantInput = require("../../validation/apply");
-const validateLoginInput = require("../../validation/login");
+const validateApplicantInput = require("../../auth/apply");
+const validateLoginInput = require("../../auth/login");
 
 // Load User model
 const User = require("../../models/User");
 
-// If user is a new user, fill in the fields (name, email, password) with data sent in the body of the request
-// Use bcryptjs to hash the password before storing it in your database
-// @route POST api/users/register
+// @route POST api/users/apply
 // @desc Register user
 // @access Public
 router.post("/apply", (req, res) => {
@@ -35,6 +33,8 @@ router.post("/apply", (req, res) => {
                 name: req.body.name,
                 email: req.body.email,
                 password: req.body.password
+                // artist category
+                // age
             });
             // Hashes password before sending to database
             bcrypt.genSalt(10, (err, salt) => {
@@ -50,4 +50,58 @@ router.post("/apply", (req, res) => {
             });
         }
     });
-  });
+});
+
+// @route POST api/users/login
+// @desc Login user and return JWT token
+// @access Public
+router.post("/login", (req, res) => {
+    // Form validation
+    const { errors, isValid } = validateLoginInput(req.body);
+    // Check validation
+    if (!isValid) {
+      return res.status(400).json(errors);
+    }
+    const email = req.body.email;
+    const password = req.body.password;
+    // Find user by email
+    User.findOne({ email }).then(user => {
+        // Check if user exists
+        if (!user) {
+            return res.status(404).json({ emailnotfound: "Email not found" });
+        }
+        // Check password
+        bcrypt
+        .compare(password, user.password)
+        .then(isMatch => {
+            if (isMatch) {
+                // If user matched
+                // Create JWT Payload
+                const payload = {
+                    id: user.id,
+                    name: user.name
+                };
+                // Signs token with hashing algorithm
+                jwt.sign(
+                    payload,
+                    keys.secretOrKey,
+                    {
+                        expiresIn: 31556926 // 1 year in seconds
+                    },
+                    (err, token) => {
+                        res.json({
+                            success: true,
+                            token: "Bearer " + token
+                        });
+                    }
+                );
+            } else {
+                return res
+                .status(400)
+                .json({ passwordincorrect: "Password incorrect" });
+            }
+        });
+    });
+});
+
+module.exports = router;
