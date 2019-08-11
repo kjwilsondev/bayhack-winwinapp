@@ -19,17 +19,31 @@ const UserSchema = new Schema({
         type: Date,
         default: Date.now
     }
-    // Add what type of artist they are
-    // categories:
+    // Future Implementation
+    //
+    // Quick Bio
+    // bio: String
+    //
+    // Contact
+    // website: String
+    // email: User.email
+    // 
+    // Image
+    // https://www.youtube.com/watch?v=srPXMt1Q0nY
+    //
+    // artist:
     //     cinematorgrapher,
     //     graphic artist,
     //     music producer,
     //     vocalist,
-    
-    // category: {
+    // artist: {
     //     type: String,
-    //     ref: 'Category',
+    //     ref: 'User',
     // }
+    //
+    // Project
+    // link: String
+    // description: String
 });
 
 module.exports = User = mongoose.model("users", UserSchema);
