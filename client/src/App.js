@@ -9,7 +9,6 @@ class App extends Component {
       <div className="App">
         <Navbar />
         <Landing />
-        <h1>BAYHACK WINWIN APP</h1>
       </div>
     );
   }
