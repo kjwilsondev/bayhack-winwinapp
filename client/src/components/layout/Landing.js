@@ -16,7 +16,7 @@ class Landing extends Component {
               Artists coming together for climate change
             </p>
             <br />
-            <div className="col s6">
+            <div className="col s12">
                 Future Login Button
               {/* <Link
                 to="/register"
