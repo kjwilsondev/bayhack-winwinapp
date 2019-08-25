@@ -17,9 +17,9 @@ class Landing extends Component {
             </p>
             <br />
             <div className="col s12">
-                Future Login Button
-              {/* <Link
-                to="/register"
+              Future Login Button
+              <Link
+                to="/apply"
                 style={{
                   width: "140px",
                   borderRadius: "3px",
@@ -27,7 +27,7 @@ class Landing extends Component {
                 }}
                 className="btn btn-large waves-effect waves-light hoverable blue accent-3"
               >
-                Register
+                Apply
               </Link>
             </div>
             <div className="col s6">
@@ -41,7 +41,7 @@ class Landing extends Component {
                 className="btn btn-large btn-flat waves-effect white black-text"
               >
                 Log In
-              </Link> */}
+              </Link>
             </div>
           </div>
         </div>

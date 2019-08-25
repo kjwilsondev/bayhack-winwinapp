@@ -6,7 +6,7 @@ class Navbar extends Component {
     return (
       <div className="navbar-fixed">
         <nav className="z-depth-0">
-          {/* <div className="nav-wrapper white">
+          <div className="nav-wrapper white">
             <Link
               to="/"
               style={{
@@ -17,20 +17,28 @@ class Navbar extends Component {
               <i className="material-icons">code</i>
               MERN
             </Link>
-          </div> */}
+          </div>
           Navbar
         </nav>
-        {/* Right Aligned Links Navbar
+        Right Aligned Links Navbar
         <nav>
-            <div class="nav-wrapper">
-            <a href="#" class="brand-logo">Logo</a>
+          <div class="nav-wrapper">
+            <a href="#" class="brand-logo">
+              Logo
+            </a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="sass.html">Sass</a></li>
-                <li><a href="badges.html">Components</a></li>
-                <li><a href="collapsible.html">JavaScript</a></li>
+              <li>
+                <a href="sass.html">Sass</a>
+              </li>
+              <li>
+                <a href="badges.html">Components</a>
+              </li>
+              <li>
+                <a href="collapsible.html">JavaScript</a>
+              </li>
             </ul>
-            </div>
-        </nav> */}
+          </div>
+        </nav>
       </div>
     );
   }

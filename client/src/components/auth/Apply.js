@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+
 class Apply extends Component {
   constructor() {
     super();
@@ -11,32 +12,35 @@ class Apply extends Component {
       errors: {}
     };
   }
-onChange = e => {
+
+  // Data Binding with onChange Handler
+  // https://medium.com/front-end-weekly/react-quick-tip-easy-data-binding-with-a-generic-onchange-handler-fb0254a7094e
+  onChange = e => {
     this.setState({ [e.target.id]: e.target.value });
   };
-onSubmit = e => {
+  onSubmit = e => {
     e.preventDefault();
-const newUser = {
+    const newUser = {
       name: this.state.name,
       email: this.state.email,
       password: this.state.password,
       password2: this.state.password2
     };
-console.log(newUser);
+    console.log(newUser);
   };
-render() {
+  render() {
     const { errors } = this.state;
-return (
+    return (
       <div className="container">
         <div className="row">
           <div className="col s8 offset-s2">
             <Link to="/" className="btn-flat waves-effect">
-              <i className="material-icons left">keyboard_backspace</i> Back to
-              home
+              <i className="material-icons left">keyboard_backspace</i>
+              Back to home
             </Link>
             <div className="col s12" style={{ paddingLeft: "11.250px" }}>
               <h4>
-                <b>Register</b> below
+                <b>Apply</b>
               </h4>
               <p className="grey-text text-darken-1">
                 Already have an account? <Link to="/login">Log in</Link>

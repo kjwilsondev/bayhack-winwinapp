@@ -3,12 +3,12 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const passport = require("passport");
-
+const logger = require('morgan');
 const users = require("./controllers/api/users");
 
 // Initialize app using express()
 const app = express();
-
+app.use(logger('dev'));
 // Bodyparser Middleware
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
@@ -26,6 +26,10 @@ mongoose
 // Passport Middleware
 app.use(passport.initialize());
 require("./config/passport")(passport);
+
+app.get('/', (req, res) => {
+    return res.json('Welcome to KJs API')
+})
 
 // Controllers
 app.use("/api/users", users);
