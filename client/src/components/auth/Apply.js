@@ -39,7 +39,7 @@ class Apply extends Component {
       password2: this.state.password2
     };
     console.log(newUser);
-    this.props.registerUser(newUser, this.props.history); 
+    this.props.applyUser(newUser, this.props.history); 
   };
   render() {
     const { errors } = this.state;
@@ -137,8 +137,8 @@ class Apply extends Component {
     );
   }
 }
-Register.propTypes = {
-  registerUser: PropTypes.func.isRequired,
+Apply.propTypes = {
+  applyUser: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired
 };
