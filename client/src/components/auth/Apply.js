@@ -108,4 +108,7 @@ class Apply extends Component {
     );
   }
 }
-export default Apply;
+export default connect(
+  mapStateToProps,
+  { applyUser }
+)(withRouter(Apply));
